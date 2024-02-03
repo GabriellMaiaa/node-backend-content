@@ -1,11 +1,10 @@
 const express = require('express')
+const path = require('path')
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-  console.log('Middleware is running')
-  res.send('<h1>testando</h1>')
-  next()
+  res.sendFile(path.join(__dirname, '../','views', 'shop.html'))
 })
 
 module.exports = router;
