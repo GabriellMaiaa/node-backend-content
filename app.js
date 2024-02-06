@@ -3,12 +3,14 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path')
 
-const adminRoutes = require('./routes/admin');
+
+const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop')
 
 app.use(bodyParser.urlencoded({extended: false }));
+app.use(express.static(path.join(__dirname, 'public')))// Isso é para pastas estáticas, como css
 
-app.use('/admin', adminRoutes); // /admin/add-product
+app.use('/admin', adminData.routes); // /admin/add-product
 app.use(shopRoutes);
 
 //Pode se fazer um try catch
